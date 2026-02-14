@@ -1,4 +1,4 @@
-package com.pioneers.rest.controllers;
+package com.pioneers.faculty_system.controllers;
 
 
 import org.springframework.web.bind.annotation.*;

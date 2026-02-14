@@ -1,10 +1,11 @@
-package com.pioneers.rest.controllers;
+package com.pioneers.faculty_system.controllers;
 
-import com.pioneers.rest.helperclass.MapToResponse;
-import com.pioneers.rest.models.dtos.GeneralResponse;
-import com.pioneers.rest.models.dtos.faculty_system.StudentRequest;
-import com.pioneers.rest.models.dtos.faculty_system.StudentResponse;
-import com.pioneers.rest.services.StudentService;
+import com.pioneers.faculty_system.helperclass.MapToResponse;
+import com.pioneers.faculty_system.models.dtos.GeneralResponse;
+import com.pioneers.faculty_system.models.dtos.faculty_system.StudentRequest;
+import com.pioneers.faculty_system.models.dtos.faculty_system.StudentResponse;
+import com.pioneers.faculty_system.services.StudentService;
+import com.pioneers.faculty_system.helperclass.ServerResponse;
 import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
@@ -32,35 +33,12 @@ public class StudentController {
         this.studentService = studentService;
     }
 
-    @GetMapping("/register")
-    public GeneralResponse<StudentResponse> registerStudent(
-            @RequestBody StudentRequest studentRequest) {
-
-        studentService.setStudent(studentRequest);
-
-        return success(
-                MapToResponse.mapToResponse(studentRequest)
-        );
-    }
-
-    @GetMapping("/login")
-    public GeneralResponse<StudentResponse> login(
-            @RequestParam String email,
-            @RequestParam String password) {
-
-        return success(
-                MapToResponse.mapToResponse(
-                        studentService.findByEmailAndPassword(email, password)
-                )
-        );
-    }
-
     @GetMapping("/update")
     public GeneralResponse<StudentResponse> updateStudent(
             @RequestParam String email,
             @RequestBody StudentRequest studentRequest) {
 
-        return success(MapToResponse.mapToResponse(studentService.EditStudent(email,studentRequest)));
+        return ServerResponse.success(MapToResponse.mapToResponse(studentService.EditStudent(email,studentRequest)));
     }
 
     @GetMapping("/getFirst")
@@ -68,10 +46,10 @@ public class StudentController {
         StudentRequest student = studentService.getFirstStudent();
 
         if (student == null) {
-            return failure("No students found");
+            return ServerResponse.failure("No students found");
         }
 
-        return success(
+        return ServerResponse.success(
                 MapToResponse.mapToResponse(student)
         );
     }
@@ -79,7 +57,7 @@ public class StudentController {
     @GetMapping("/clearAll")
     public GeneralResponse<Void> clearAllStudents() {
         studentService.clearAllStudents();
-        return success(null);
+        return ServerResponse.success(null);
     }
 
     @GetMapping("/clearStudent")
@@ -87,31 +65,17 @@ public class StudentController {
             @RequestParam String email) {
 
         studentService.clearStudentByEmail(email);
-        return success(null);
+        return ServerResponse.success(null);
     }
 
     @GetMapping("/fetchAll")
     public GeneralResponse<Set<StudentRequest>> fetchAllStudents() {
 
-        return success(
+        return ServerResponse.success(
                 studentService.fetchAllStudents()
         );
     }
 
-    private <T> GeneralResponse<T> success(T data) {
-        GeneralResponse<T> response = new GeneralResponse<>();
-        response.setStatus(200);
-        response.setMessage("Success");
-        response.setData(data);
-        return response;
-    }
 
-    private <T> GeneralResponse<T> failure(String message) {
-        GeneralResponse<T> response = new GeneralResponse<>();
-        response.setStatus(404);
-        response.setMessage(message);
-        response.setData(null);
-        return response;
-    }
 }
 

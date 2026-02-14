@@ -1,4 +1,4 @@
-package com.pioneers.rest.models.dtos;
+package com.pioneers.faculty_system.models.dtos;
 
 import java.time.Instant;
 import java.util.List;

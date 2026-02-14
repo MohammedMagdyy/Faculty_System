@@ -1,7 +1,7 @@
-package com.pioneers.rest.services;
+package com.pioneers.faculty_system.services;
 
-import com.pioneers.rest.models.dtos.faculty_system.StudentRequest;
-import com.pioneers.rest.repositories.StudentRepository;
+import com.pioneers.faculty_system.models.dtos.faculty_system.StudentRequest;
+import com.pioneers.faculty_system.repositories.StudentRepository;
 import org.springframework.stereotype.Service;
 import java.util.Set;
 

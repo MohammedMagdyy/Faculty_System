@@ -1,6 +1,6 @@
-package com.pioneers.rest.repositories;
+package com.pioneers.faculty_system.repositories;
 
-import com.pioneers.rest.models.dtos.faculty_system.StudentRequest;
+import com.pioneers.faculty_system.models.dtos.faculty_system.StudentRequest;
 import org.springframework.stereotype.Repository;
 import java.util.LinkedHashSet;
 import java.util.Set;

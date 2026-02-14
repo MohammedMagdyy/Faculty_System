@@ -1,8 +1,8 @@
-package com.pioneers.rest.helperclass;
+package com.pioneers.faculty_system.helperclass;
 
-import com.pioneers.rest.models.dtos.faculty_system.Address;
-import com.pioneers.rest.models.dtos.faculty_system.StudentRequest;
-import com.pioneers.rest.models.dtos.faculty_system.StudentResponse;
+import com.pioneers.faculty_system.models.dtos.faculty_system.Address;
+import com.pioneers.faculty_system.models.dtos.faculty_system.StudentRequest;
+import com.pioneers.faculty_system.models.dtos.faculty_system.StudentResponse;
 
 public class MapToResponse {
 

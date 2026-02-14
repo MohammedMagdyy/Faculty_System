@@ -1,4 +1,4 @@
-package com.pioneers.rest.models.dtos.faculty_system;
+package com.pioneers.faculty_system.models.dtos.faculty_system;
 
 import java.util.Objects;
 
